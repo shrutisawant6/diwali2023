@@ -1,194 +1,195 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import groupApplause from "./assets/animated-small-group-applause.wav"
-import achBell from "./assets/achievement-bell.wav"
-import magical2 from "./assets/magical2.wav"
-import whoosh from "./assets/whoosh.wav"
-import fairyWin from "./assets/fairy-win.wav"
+import { useState, useEffect } from 'react';
 
 function App() {
 
-    function handleClick(el) {
-        if (el.classList.toString().includes('card-blur')) {
-            el.classList.toggle('card-blur');
-            turnCard(el);
-            playSound(el.id);
-        }
-        else {
-            soundAudio.pause();
-        }       
-    }
-
-    var soundAudio = new Audio(achBell);
-    const cardDetails = [
+    const images = [
         {
-            id: "crd22",
-            soundEffect: magical2,
-            image: "card22.jpg",
+            id: "idI",
+            url: "SadMan.gif",
+            label: "Dont send long texts and make people sick!"
         },
         {
-            id: "crd16",
-            soundEffect: magical2,
-            image: "card16.jpg",
-        },
-        {
-            id: "crd17",
-            soundEffect: magical2,
-            image: "card17.jpg",
-        },
-        {
-            id: "crd23",
-            soundEffect: magical2,
-            image: "card23.jpg",
-        },
-        {
-            id: "crd8",
-            soundEffect: fairyWin,
-            image: "card8.jpg",
-        },
-        {
-            id: "crd9",
-            soundEffect: magical2,
-            image: "card9.jpg",
-        },
-        {
-            id: "crd5",
-            soundEffect: magical2,
-            image: "card5.jpg",
-        },
-        {
-            id: "crd20",
-            soundEffect: magical2,
-            image: "card20.jpg",
-        },
-        {
-            id: "crd10",
-            soundEffect: magical2,
-            image: "card10.jpg",
-        },
-        {
-            id: "crd11",
-            soundEffect: magical2,
-            image: "card11.jpg",
-        },
-        {
-            id: "crd6",
-            soundEffect: groupApplause,
-            image: "card6.jpg",
-        },
-        {
-            id: "crd12",
-            soundEffect: magical2,
-            image: "card12.jpg",
-        },
-        {
-            id: "crd13",
-            soundEffect: magical2,
-            image: "card13.jpg",
-        },
-        {
-            id: "crd4",
-            soundEffect: achBell,
-            image: "card4.jpg",
-        },
-        {
-            id: "crd14",
-            soundEffect: magical2,
-            image: "card14.jpg",
-        },
-        {
-            id: "crd2",
-            soundEffect: whoosh,
-            image: "card2.jpg",
-        },
-        {
-            id: "crd19",
-            soundEffect: magical2,
-            image: "card19.jpg",
-        },
-        {
-            id: "crd15",
-            soundEffect: magical2,
-            image: "card15.jpg",
-        },
-
-        {
-            id: "crd3",
-            soundEffect: magical2,
-            image: "card3.jpg",
-        },
-        ,
-        {
-            id: "crd25",
-            soundEffect: magical2,
-            image: "card25.jpg",
-        },
-        {
-            id: "crd1",
-            soundEffect: magical2,
-            image: "card1.jpg",
-        },
-        {
-            id: "crd18",
-            soundEffect: magical2,
-            image: "card18.jpg",
-        },
-        {
-            id: "crd21",
-            soundEffect: magical2,
-            image: "card21.jpg",
-        },
-        {
-            id: "crd24",
-            soundEffect: magical2,
-            image: "card24.jpg",
+            id: "IdII",
+            url: "HappyMan.gif",
+            label: "Rather use this link and earn a smile."
         }
     ];
 
-    function turnCard(el) {
-        cardDetails.map((crd) => {
-            if (crd.id == el.id) {
-                el.src = crd.image;
-            }
-        });
-    }
+    const decorPicture = [
+        {
+            id: "fpI",
+            width: "10%",
+            top: "20%",
+            left: "2%"
+        },
+        {
+            id: "fpII",
+            width: "18%",
+            top: "30%",
+            left: "80%"
+        }
+    ];
 
-    function playSound(id) {
-        soundAudio.pause();
-        cardDetails.map((crd) => {
-            if (crd.id == id) {
-                soundAudio = new Audio(crd.soundEffect);
-                soundAudio.play();
+    const lampIPlacement = [
+        {
+            id: "lIpI",
+            top: "72%", left: "80%"
+        },
+        {
+            id: "lIpII",
+            top: "72%", left: "75%"
+        },
+        {
+            id: "lIpIII",
+            top: "72%", left: "70%"
+        },
+        ,
+        {
+            id: "lIpIV",
+            top: "50%", left: "5%"
+        },
+        {
+            id: "lIpV",
+            top: "50%", left: "10%"
+        }
+    ];
+
+    const lampIIPlacement = [
+        {
+            id: "lIIpI",
+            top: "65%", left: "10%"
+        },
+        {
+            id: "lIIpII",
+            top: "65%", left: "15%"
+        },
+        {
+            id: "lIIpIII",
+            top: "65%", left: "20%"
+        }
+    ];
+
+    const lightsPlacement = [
+        {
+            id: "lpI",
+            top: "0%", left: "2%"
+        },
+        {
+            id: "lpII",
+            top: "0%", left: "10%"
+        },
+        {
+            id: "lpIII",
+            top: "0%", left: "20%"
+        },
+        {
+            id: "lpIV",
+            top: "0%", left: "30%"
+        },
+        {
+            id: "lpV",
+            top: "0%", left: "40%"
+        },
+        {
+            id: "lpVI",
+            top: "0%", left: "50%"
+        },
+        {
+            id: "lpVII",
+            top: "0%", left: "60%"
+        },
+        {
+            id: "lpVIII",
+            top: "0%", left: "70%"
+        },
+        {
+            id: "lpIX",
+            top: "0%", left: "80%"
+        }
+    ];
+
+    var imageCounter = 0;
+    var imagesCount = images.length;
+    const [show, toggleShow] = useState(false);
+    const [currentImage, setCurrentImage] = useState(null);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            if (imageCounter < imagesCount) {
+                setCurrentImage(images[imageCounter]);
+                imageCounter++;
             }
-        });
-    }
+            else {
+                setCurrentImage(null);
+                toggleShow(!show);
+                clearInterval(intervalId);
+            }
+        }, 6000);
+
+        return () => clearInterval(intervalId);
+    }, []);
+
 
     return (
         <div className="App">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
-             
-
             </header>
 
-            <div className="body-background">
-                <div>
-                    <div className="four-pointed-star"></div>
-                    <div className="label-div">
-                        <label>Click on any tile and see the magic !</label>
-                    </div>
-                </div>
+            <div className="container">
 
-                <div>
+                {currentImage == null && !show &&
+                    <div className="blink"><span>This Diwali...</span></div>
+                }
+
+                {currentImage != null &&
+                    <div> 
+                        <img src={currentImage.url} width="50%" />
+                        <label className="label-div" style={{ display: "block", "text-align": "center" }}>{currentImage.label}</label>
+                    </div>
+                }
+
+                {show &&
                     <div>
-                        {cardDetails.map((crd) => {
+
+                        <label className="label-div" style={{ position: "absolute", top: "20%", left: "25%" }}>Happy</label>
+                        <label className="label-div" style={{ position: "absolute", top: "20%", left: "60%" }}>Diwali</label>
+
+                        {decorPicture.map((pic) => {
                             return (
-                                <img key={crd.id} id={crd.id} src="card0.jpg" className="card-block card-blur" onClick={({ target }) => handleClick(target)} />
+                                <img key={pic.id} id={pic.id} src="Decor1.gif" width={pic.width}
+                                    style={{ position: "absolute", top: pic.top, left: pic.left }} />
                             );
                         })}
+
+                        {lampIPlacement.map((pic) => {
+                            return (
+                                <img key={pic.id} src="Lamp1.gif" width="5%"
+                                    style={{ position: "absolute", top: pic.top, left: pic.left }} />
+                            );
+                        })}
+
+                        {lampIIPlacement.map((pic) => {
+                            return (
+                                <img key={pic.id} src="Lamp2.gif" width="10%"
+                                    style={{ position: "absolute", top: pic.top, left: pic.left }} />
+                            );
+                        })}
+
+                        {lightsPlacement.map((pic) => {
+                            return (
+                                <img key={pic.id} src="Lights.gif" width="12%"
+                                    style={{ position: "absolute", top: pic.top, left: pic.left }} />
+                            );
+                        })}
+
+                        <img src="Family.gif" width="60%" />
+
                     </div>
-                </div>
+                }
             </div>
         </div>
     );
