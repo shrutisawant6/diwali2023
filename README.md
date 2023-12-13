@@ -1,5 +1,5 @@
 # Diwali
 
-Wishing you a very happy Diwali !
+Happy Diwali! Click below and get a smile rather possibly a giggle.
 
-Check it out : [https://shrutisawant6.github.io/diwali2023]
+[https://shrutisawant6.github.io/diwali2023]
